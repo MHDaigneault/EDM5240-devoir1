@@ -3266,39 +3266,45 @@ publications = [
 #3 partages
 #4 réactions
 #5 commentaires
-
+# 3e,4e et 5e éléments de ta ligne. Chaque ligne équivaut a un post différent. 
 partages = 0
 reactions = 0
 commentaires = 0
 compteur = 0
+#définir les variables. Elles sont toutes à 0.
 
 Ligne1 = publications [0][0]
 Ligne2 = ""
+#Début a la ligne 0 et ton élément 0. Donc ta première ligne dans l'ensemble des publications et le nom du média.
 
 for post in publications:
-
+#Settings de la boucle, pour chaque ligne (post) dans ton ensemble de publications (l'ensemble total des lignes).
+#La boucle se fie a la ligne au dessus pour continuer à faire la somme des partages, reactions et commentaires.
 
 	Ligne2 = post[0]
 	compteur +=1
-
+#Donc Ligne2 est équivalent a la ligne (post) 0, plus 1. Donc la ligne sous Ligne1. 
 	if Ligne1 == Ligne2:
+		# Si le média de ta première ligne est le même que celui de la ligne qui suit.
 		partages += post[3]
 		reactions += post[4]
 		commentaires += post[5]
 		total = partages + reactions + commentaires
-
+#Donc si la ligne qui suit (Ligne2) est éagle, donc le même média, que la ligne d'avant(Ligne1), on continu d'additionner le nombre de partages, de reactions et les commentaires.
+#Le total est la somme du nombre de partages, de réactions et de commentaires.
 	else:
 		print ("Les publications du media "+ Ligne1 + " ont ete partagees " + str(partages) + " fois, ont provoque " + str(reactions) + " reactions, et ont genere " + str(commentaires) + " commentaires, pour un engagement total de " + str(total) + " en 2017.")
 		partages = post[3]
 		reactions = post[4]
 		commentaires = post[5]
-
+#Si la ligne qui suit n'est pas équivalente à la ligne juste avant, donc pas le même média, on recommence le calcul.
 	Ligne1=Ligne2
 
 	if compteur == len(publications):
 		print ("Les publications du media "+ Ligne1 + " ont ete partagees " + str(partages) + " fois, ont provoque " + str(reactions) + " reactions, et ont genere " + str(commentaires) + " commentaires, pour un engagement total de " + str(total) + " en 2017.")
 
-
+#À la fin, on réalise que l'on arrive pas a voir les résultats pour Vice, puisque la boucle n'arrive plus a trouver des informations. Il n'y a plus de données.
+#Donc si on arrive à la fin de l'ensemble des posts, donc de la longueur des publications, on print.
 	
 
 
